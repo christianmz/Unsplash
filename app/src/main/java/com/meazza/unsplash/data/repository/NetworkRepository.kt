@@ -1,8 +1,10 @@
 package com.meazza.unsplash.data.repository
 
-import com.meazza.unsplash.data.network.response.UnsplashResult
+import androidx.paging.PagingData
+import com.meazza.unsplash.data.network.response.UnsplashPhoto
+import kotlinx.coroutines.flow.Flow
 
 interface NetworkRepository {
 
-    suspend fun getResult(query: String, page: Int, perPage: Int): UnsplashResult
+    fun getResult(query: String): Flow<PagingData<UnsplashPhoto>>
 }

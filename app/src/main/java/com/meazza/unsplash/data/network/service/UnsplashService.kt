@@ -1,7 +1,7 @@
 package com.meazza.unsplash.data.network.service
 
 import com.meazza.unsplash.BuildConfig
-import com.meazza.unsplash.data.network.response.UnsplashResult
+import com.meazza.unsplash.data.network.response.UnsplashResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -19,5 +19,5 @@ interface UnsplashService {
         @Query("query") query: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): UnsplashResult
+    ): UnsplashResponse
 }

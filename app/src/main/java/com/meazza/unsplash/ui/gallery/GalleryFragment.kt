@@ -9,7 +9,6 @@ import com.meazza.unsplash.R
 import com.meazza.unsplash.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
@@ -17,9 +16,20 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         DataBindingUtil.bind<FragmentGalleryBinding>(view)?.apply {
             lifecycleOwner = this@GalleryFragment
             viewModel = galleryViewModel
+        }
+
+        getPhotos()
+    }
+
+    private fun getPhotos() {
+        galleryViewModel.run {
+            getPhotos().observe(viewLifecycleOwner) {
+                adapter.submitData(viewLifecycleOwner.lifecycle, it)
+            }
         }
     }
 }
