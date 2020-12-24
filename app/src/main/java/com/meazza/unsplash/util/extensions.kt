@@ -17,7 +17,7 @@ fun ImageView.loadUrl(url: String?) {
         .centerCrop()
         .transition(DrawableTransitionOptions.withCrossFade(factory))
         .error(R.drawable.ic_broken_image)
-        .override(400, 400)
+        .override(600, 600)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
         .waitForLayout()

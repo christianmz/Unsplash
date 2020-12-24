@@ -3,11 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/galleryFragment">
+    app:startDestination="@id/nav_gallery">
 
     <fragment
-        android:id="@+id/galleryFragment"
+        android:id="@+id/nav_gallery"
         android:name="com.meazza.unsplash.ui.gallery.GalleryFragment"
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.meazza.unsplash.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.meazza.unsplash.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.meazza.unsplash.R
 import com.meazza.unsplash.databinding.FragmentGalleryBinding
+import com.meazza.unsplash.ui.gallery.adapter.UnsplashPhotoLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +29,13 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
     private fun getPhotos() {
         galleryViewModel.run {
             getPhotos().observe(viewLifecycleOwner) {
-                adapter.submitData(viewLifecycleOwner.lifecycle, it)
+                adapter.run {
+                    submitData(viewLifecycleOwner.lifecycle, it)
+                    withLoadStateHeaderAndFooter(
+                        header = UnsplashPhotoLoadStateAdapter { retry() },
+                        footer = UnsplashPhotoLoadStateAdapter { retry() }
+                    )
+                }
             }
         }
     }

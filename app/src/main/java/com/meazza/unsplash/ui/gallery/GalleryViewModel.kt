@@ -16,7 +16,7 @@ class GalleryViewModel @ViewModelInject constructor(
     val adapter = UnsplashPhotoAdapter
 
     fun getPhotos() = liveData {
-        repository.getResult("Europe").cachedIn(viewModelScope).collect {
+        repository.getResult("Girls").cachedIn(viewModelScope).collect {
             emit(it)
         }
     }
